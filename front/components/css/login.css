@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400&display=swap');
+
+*{margin:0; padding:0;}
+body{
+	font:15px/1.8 'Noto Sans KR', sans-serif;
+	background:#f5f6f8;
+	color:#777;}
+a{text-decoration:none;
+	color:#777;}
+html,body{
+	height:100%;
+}
+	
+#container{
+	width:400px;
+	background:#f5f6f8;
+	margin:0 auto;
+	height:400px;
+}
+
+#container2{
+	width:400px;
+	background:#f5f6f8;
+	margin:30px auto;
+}
+/* 레이아웃 스타일 */
+.wrapper{
+	width:100%;
+	background:white;
+	padding:40px 40px 10px;
+	box-sizing:border-box;
+	border:1px solid #ccc;
+	margin-top:30px;
+}
+
+.wrapper2{
+	width:100%;
+	background:white;
+	padding:20px;
+	box-sizing:border-box;
+	border:1px solid #ccc;
+	text-align:center;
+}
+
+
+
+header{
+	margin-bottom:25px;
+	text-align:center;}
+header img{
+	width:180px;
+}
+/* form style */
+.loginWrap{
+	border-bottom:1px solid #ccc;
+	padding-bottom:20px;
+}
+.loginWrap form>p{
+	margin-bottom:10px;
+}
+.loginWrap form>p input{
+	width:100%;
+	outline:none;
+	border:1px solid #ccc;
+	padding:10px;
+	box-sizing:border-box;
+	font-size:1.1em;
+	background:#f5f6f8;
+	border-radius:3px;
+}
+.loginWrap input[type="submit"]{
+	margin-top:10px;
+	background:#b2dffc;
+	color:white;
+	border:none;
+}
+
+.stateIpWrap{overflow:auto;}
+	.stateLeft{float:left;}
+	.ipRight{float:right;}
+
+/* 간편로그인 스타일 */
+
+.loginWrap2{
+	margin:50px 0;
+	text-align:center;
+	color:#444;
+	}
+.loginWrap2 h2{margin-bottom:20px;}
+.loginWrap2 p{overflow:auto;}
+.loginWrap2 p a{
+	border:1px solid #03c75a;
+	width:48%;
+	display:inline-block;
+	box-sizing:border-box;
+	float:left;
+	padding:10px 0;
+	background:white;
+	transition:0.5s;
+	color:#444;
+}
+.loginWrap2 p a:first-child{margin-right:4%;}
+.loginWrap2 p a:hover{
+	color:white;
+	background:#03c75a;
+	}
+	
+.searchWrap{
+	text-align:center;
+	margin:20px;
+}
+.searchWrap a{
+	margin:0 10px;
+}
+.banner img{width:100%;}
+
+footer{
+	margin-top:50px;
+	color:#444;
+	}
+footer img{vertical-align:middle;}
+
+
+/* container2 style */
+
+.wrapper2 a{color:#00a2f8;}
