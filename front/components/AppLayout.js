@@ -11,6 +11,7 @@ import LoginForm from './LoginForm';
 import useInput from '../hooks/useInput';
 import HeaderCustomLogin from './HeaderCustomLogin';
 import HeaderCustomLogout from './HeaderCustomLogout';
+import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 const SearchInput = styled(Input.Search)`
   vertical-align: middle;
 `;
