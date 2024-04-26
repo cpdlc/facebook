@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(hpp());
   app.use(helmet({ contentSecurityPolicy: false }));
   // app.use(cors({
-  //   origin: 'http://nodebird.com',
+  //   origin: 'http://chahome.store',
   //   credentials: true,
   // }));
 } else {
@@ -40,7 +40,7 @@ if (process.env.NODE_ENV === 'production') {
   
 }
 app.use(cors({
-  origin: ['http://localhost:3060','nodebird.com','http://3.34.50.242'],
+  origin: ['http://localhost:3060','chahome.store'],
   credentials: true,
 }));
 app.use('/', express.static(path.join(__dirname, 'uploads')));
@@ -54,7 +54,7 @@ app.use(session({
   cookie: {
     httpOnly: true,
     secure: false,
-    domain: process.env.NODE_ENV === 'production' && '.nodebird.com'
+    domain: process.env.NODE_ENV === 'production' && '.chahome.com'
   },
 }));
 app.use(passport.initialize());

@@ -1,1 +1,1 @@
-export const backUrl ='http://3.34.200.151';
+export const backUrl ='http://api.chahome.store';
