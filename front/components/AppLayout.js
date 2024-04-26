@@ -9,7 +9,8 @@ import { AppBar, Box, CssBaseline, Fab, IconButton, Snackbar, Stack, Toolbar, Ty
 import UserProfile from './UserProfile';
 import LoginForm from './LoginForm';
 import useInput from '../hooks/useInput';
-import HeaderCustom from './HeaderCustom';
+import HeaderCustomLogin from './HeaderCustomLogin';
+import HeaderCustomLogout from './HeaderCustomLogout';
 const SearchInput = styled(Input.Search)`
   vertical-align: middle;
 `;
@@ -33,7 +34,7 @@ const AppLayout = ({ children }) => {
         minHeight: '100%',
       }}>
         <Stack>
-          <HeaderCustom />
+          {me ? <HeaderCustomLogin /> : <HeaderCustomLogout />}
           {/* <Toolbar sx={{ justifyContent: 'center' }}>
             <Menu mode="horizontal">
               <Menu.Item>
