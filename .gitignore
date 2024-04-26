@@ -2,3 +2,4 @@ react-facebook.pem
 node_modules
 .env
 .next
+/front/build/

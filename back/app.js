@@ -31,10 +31,10 @@ if (process.env.NODE_ENV === 'production') {
   app.use(morgan('combined'));
   app.use(hpp());
   app.use(helmet({ contentSecurityPolicy: false }));
-  app.use(cors({
-    origin: 'http://nodebird.com',
-    credentials: true,
-  }));
+  // app.use(cors({
+  //   origin: 'http://nodebird.com',
+  //   credentials: true,
+  // }));
 } else {
   app.use(morgan('dev'));
   app.use(cors({
