@@ -25,6 +25,8 @@ db.sequelize.sync()
   .catch(console.error);
 passportConfig();
 
+
+
 if (process.env.NODE_ENV === 'production') {
   app.use(morgan('combined'));
   app.use(hpp());
@@ -36,7 +38,7 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   app.use(morgan('dev'));
   app.use(cors({
-    origin: true,
+    origin: ['http://localhost:3060','nodebird.com'],
     credentials: true,
   }));
 }
