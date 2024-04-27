@@ -1,6 +1,9 @@
 import produce from '../util/produce';
 
 export const initialState = {
+  signupOpenLoading: false, // 회원가입 토글
+  signupOpenDone: false,
+  signupOpenError: null,
   loginOpenLoading: false, // 로그인 토글
   loginOpenDone: false,
   loginOpenError: null,
@@ -43,6 +46,10 @@ export const initialState = {
   me: null,
   userInfo: null,
 };
+
+export const SIGNUP_OPEN_REQUEST = 'SIGNUP_OPEN_REQUEST';
+export const SIGNUP_OPEN_SUCCESS = 'SIGNUP_OPEN_SUCCESS';
+export const SIGNUP_OPEN_FAILURE = 'SIGNUP_OPEN_FAILURE';
 
 export const LOGIN_OPEN_REQUEST = 'LOGIN_OPEN_REQUEST';
 export const LOGIN_OPEN_SUCCESS = 'LOGIN_OPEN_SUCCESS';
@@ -108,11 +115,18 @@ export const logoutRequestAction = () => ({
   type: LOG_OUT_REQUEST,
 });
 
+export const signupOpenAction = () => ({
+  type: SIGNUP_OPEN_REQUEST,
+});
+
 export const loginOpenAction = () => ({
   type: LOGIN_OPEN_REQUEST,
 });
 export const loginOpenSuccessAction = () => ({
   type: LOGIN_OPEN_SUCCESS,
+});
+export const signupOpenSuccessAction = () => ({
+  type: SIGNUP_OPEN_SUCCESS,
 });
 
 const reducer = (state = initialState, action) => produce(state, (draft) => {
@@ -158,6 +172,16 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
     case LOAD_FOLLOWERS_FAILURE:
       draft.loadFollowersLoading = false;
       draft.loadFollowersError = action.error;
+      break;
+      case SIGNUP_OPEN_REQUEST:
+      draft.signupOpenLoading = !state.signupOpenLoading;
+      break;
+    case SIGNUP_OPEN_SUCCESS:
+      draft.signupOpenLoading =false;
+      break;
+    case SIGNUP_OPEN_FAILURE:
+      draft.signupOpenLoading = false;
+      draft.signupOpenError = action.error;
       break;
     case LOGIN_OPEN_REQUEST:
       draft.loginOpenLoading = !state.loginOpenLoading;

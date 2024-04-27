@@ -121,8 +121,8 @@ header{
 	h1에 있는 텍스트 없애는 방법 */
 	
 	width:250px;
-		height:50px;
-	background:url(../images/logo2.png) no-repeat center center;
+		/* height:50px;
+	background:url(../images/logo2.png) no-repeat center center; */
 	text-indent:-999px;
 	overflow:hidden;
 }
@@ -282,7 +282,7 @@ article:hover .txt{
 		left:10px;
 		transform:translate(0%,-70%);
 		/* h1에 있는 텍스트 없애는 방법 */
-		background:url(../images/logo2.png) no-repeat center center;
+		/* background:url(../images/logo2.png) no-repeat center center; */
 		width:250px;
 		height:50px;
 		

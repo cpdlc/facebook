@@ -36,7 +36,7 @@ const LoginForm = () => {
   useEffect(() => {
     if (logInDone) {
       // Router.replace('/');
-      dispatch(loginOpenSuccessAction());
+      // dispatch(loginOpenSuccessAction());
     }
   }, [logInDone]);
 
@@ -47,8 +47,9 @@ const LoginForm = () => {
   }, [logInError]);
 
   const onSubmitForm = useCallback(() => {
-    console.log(email, password);
+    // console.log(email, password);
     dispatch(loginRequestAction({ email, password }));
+    dispatch(loginOpenSuccessAction());
   }, [email, password]);
 
   useEffect(() => {
@@ -202,8 +203,8 @@ const LoginForm = () => {
 };
 
 export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
-  console.log('getServerSideProps start');
-  console.log(context.req.headers);
+  // console.log('getServerSideProps start');
+  // console.log(context.req.headers);
   const cookie = context.req ? context.req.headers.cookie : '';
   axios.defaults.headers.Cookie = '';
   if (context.req && cookie) {
@@ -213,7 +214,7 @@ export const getServerSideProps = wrapper.getServerSideProps(async (context) => 
     type: LOAD_MY_INFO_REQUEST,
   });
   context.store.dispatch(END);
-  console.log('getServerSideProps end');
+  // console.log('getServerSideProps end');
   await context.store.sagaTask.toPromise();
 });
 

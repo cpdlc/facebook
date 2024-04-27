@@ -5,6 +5,7 @@ import sns2 from '../src/homeImages/img/sns2.png';
 import sns3 from '../src/homeImages/img/sns3.png';
 import sns4 from '../src/homeImages/img/sns4.png';
 import sns5 from '../src/homeImages/img/sns5.png';
+import logo from '../components/images/logo2.png';
 import Image from 'next/image';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
@@ -40,7 +41,7 @@ const HeaderCustomLogin = () => {
           </div>
           <Stack sx={{ cursor: "pointer" }}>
             <Link href='/'>
-              <h1 className="logo">차정훈</h1>
+              <h1 className="logo"><img src={logo} alt="" />차정훈</h1>
             </Link>
           </Stack>
 

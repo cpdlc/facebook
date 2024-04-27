@@ -9,7 +9,7 @@ import { END } from 'redux-saga';
 import { Box, Grid, Typography, Button, Stack } from '@mui/material';
 import AppLayout from '../components/AppLayout';
 import useInput from '../hooks/useInput';
-import { LOAD_MY_INFO_REQUEST, SIGN_UP_REQUEST } from '../reducers/user';
+import { LOAD_MY_INFO_REQUEST, SIGN_UP_REQUEST, signupOpenSuccessAction } from '../reducers/user';
 import wrapper from '../store/configureStore';
 import AuthCardWrapper from '../components/AuthCardWrapper';
 import Link from 'next/link';
@@ -24,13 +24,14 @@ const Signup = () => {
 
   useEffect(() => {
     if (me && me.id) {
-      Router.replace('/');
+      // Router.replace('/');
     }
   }, [me && me.id]);
 
   useEffect(() => {
     if (signUpDone) {
-      Router.replace('/login');
+      // Router.replace('/login');
+      // dispatch(signupOpenSuccessAction());
     }
   }, [signUpDone]);
 
@@ -67,11 +68,12 @@ const Signup = () => {
     if (!term) {
       return setTermError(true);
     }
-    console.log(email, nickname, password);
+    // console.log(email, nickname, password);
     dispatch({
       type: SIGN_UP_REQUEST,
       data: { email, password, nickname },
     });
+    dispatch(signupOpenSuccessAction());
   }, [email, password, passwordCheck, term]);
 
   useEffect(() => {
@@ -83,9 +85,10 @@ const Signup = () => {
     }
 
   }, [password, nickname, passwordCheck, email, term, passwordError])
-  console.log(!!password && !!nickname && !!passwordCheck && !!email && !!term && !passwordError)
+  // console.log(!!password && !!nickname && !!passwordCheck && !!email && !!term && !passwordError)
   return (
-    <AppLayout>
+    // <AppLayout>
+    <>
       <Row gutter={24}>
         <Col xs={24} md={6}>
         </Col>
@@ -101,9 +104,9 @@ const Signup = () => {
                 <Stack
                   sx={{
                     textAlign: 'center',
-                    marginBottom:"20px",
+                    marginBottom: "20px",
                     fontWeight: "bolder",
-                    fontSize:"40px"
+                    fontSize: "40px"
                   }}>
                   <h1>
                     {/* <a href="index.html">
@@ -252,24 +255,26 @@ const Signup = () => {
           </AuthCardWrapper>
         </Col>
       </Row>
-    </AppLayout>
+   
+    {/* </AppLayout> */ }
+    </>
   );
 };
 
-export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
-  console.log('getServerSideProps start');
-  console.log(context.req.headers);
-  const cookie = context.req ? context.req.headers.cookie : '';
-  axios.defaults.headers.Cookie = '';
-  if (context.req && cookie) {
-    axios.defaults.headers.Cookie = cookie;
-  }
-  context.store.dispatch({
-    type: LOAD_MY_INFO_REQUEST,
-  });
-  context.store.dispatch(END);
-  console.log('getServerSideProps end');
-  await context.store.sagaTask.toPromise();
-});
+// export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
+//   console.log('getServerSideProps start');
+//   console.log(context.req.headers);
+//   const cookie = context.req ? context.req.headers.cookie : '';
+//   axios.defaults.headers.Cookie = '';
+//   if (context.req && cookie) {
+//     axios.defaults.headers.Cookie = cookie;
+//   }
+//   context.store.dispatch({
+//     type: LOAD_MY_INFO_REQUEST,
+//   });
+//   context.store.dispatch(END);
+//   console.log('getServerSideProps end');
+//   await context.store.sagaTask.toPromise();
+// });
 
 export default Signup;

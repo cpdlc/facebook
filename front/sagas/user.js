@@ -138,7 +138,7 @@ function loadUserAPI(data) {
 function* loadUser(action) {
   try {
     const result = yield call(loadUserAPI, action.data);
-    console.log('loadUserData', result.data);
+    // console.log('loadUserData', result.data);
     yield put({
       type: LOAD_USER_SUCCESS,
       data: result.data,
@@ -218,7 +218,7 @@ function signUpAPI(data) {
 function* signUp(action) {
   try {
     const result = yield call(signUpAPI, action.data);
-    console.log(result);
+    // console.log(result);
     yield put({
       type: SIGN_UP_SUCCESS,
     });
