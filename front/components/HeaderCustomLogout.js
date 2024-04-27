@@ -12,17 +12,20 @@ import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 import PersonAddAlt1OutlinedIcon from '@mui/icons-material/PersonAddAlt1Outlined';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutRequestAction } from '../reducers/user';
-import {  Stack } from '@mui/material';
+import { loginOpenAction, logoutRequestAction } from '../reducers/user';
+import {  Box, Button, Stack } from '@mui/material';
 
 
 const HeaderCustomLogout = () => {
   const dispatch = useDispatch();
-  const { me, logOutLoading } = useSelector((state) => state.user);
+  const { me, logOutLoading ,loginOpenLoading} = useSelector((state) => state.user);
   const onLogOut = useCallback(() => {
     dispatch(logoutRequestAction());
   }, []);
-
+  const onOpenLogIn = useCallback(() => {
+    dispatch(loginOpenAction());
+  }, []);
+  
   return (
     <>
       <div>
@@ -33,8 +36,11 @@ const HeaderCustomLogout = () => {
             </div>
 
               <div className="upperRightside">
-                <Link href="/login"><a><LoginIcon />&nbsp;로그인</a></Link>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <Stack justifyContent='flex-end' direction='row'>
+                <Box onClick={onOpenLogIn}><a><LoginIcon />&nbsp;로그인</a></Box>&nbsp;&nbsp;|&nbsp;&nbsp;
+                {/* <Link href="/login"><a><LoginIcon />&nbsp;로그인</a></Link>&nbsp;&nbsp;|&nbsp;&nbsp; */}
                 <Link href="/signup"><a><PersonAddAlt1OutlinedIcon />&nbsp;회원가입</a></Link>&nbsp;&nbsp;&nbsp;
+                </Stack>
               </div>
            
           </div>

@@ -109,13 +109,13 @@ article .bg{
 	background-size:cover;
 	background-position:center center;
 }
-article .bg1{background-image:url(../img/pic1.jpg);}
-article .bg2{background-image:url(../img/pic2.jpg);}
-article .bg3{background-image:url(../img/pic3.jpg);}
-article .bg4{background-image:url(../img/pic4.jpg);}
-article .bg5{background-image:url(../img/pic5.jpg);}
-article .bg6{background-image:url(../img/pic6.jpg);}
-article .bg7{background-image:url(../img/pic7.jpg);}
+article .bg1{background-image:url(../images/pic1.jpg);}
+article .bg2{background-image:url(../images/pic2.jpg);}
+article .bg3{background-image:url(../images/pic3.jpg);}
+article .bg4{background-image:url(../images/pic4.jpg);}
+article .bg5{background-image:url(../images/pic5.jpg);}
+article .bg6{background-image:url(../images/pic6.jpg);}
+article .bg7{background-image:url(../images/pic7.jpg);}
 
 
 
@@ -208,7 +208,7 @@ article:hover .txt{
 		left:10px;
 		transform:translate(0%,-70%);
 		/* h1에 있는 텍스트 없애는 방법 */
-		background:url(../img/logo2.png) no-repeat center center;
+		background:url(../images/logo2.png) no-repeat center center;
 		width:250px;
 		height:50px;
 		
@@ -304,7 +304,7 @@ article:hover .txt{
 		top:30px;
 		left:50%;
 		transform:translate(-50%,0);
-		background:url(../img/logo1.png) no-repeat center center;
+		background:url(../images/logo1.png) no-repeat center center;
 		width:180px;
 		height:136px;
 	}

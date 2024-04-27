@@ -1,6 +1,9 @@
 import produce from '../util/produce';
 
 export const initialState = {
+  loginOpenLoading: false, // 로그인 토글
+  loginOpenDone: false,
+  loginOpenError: null,
   loadMyInfoLoading: false, // 유저 정보 가져오기 시도중
   loadMyInfoDone: false,
   loadMyInfoError: null,
@@ -40,6 +43,10 @@ export const initialState = {
   me: null,
   userInfo: null,
 };
+
+export const LOGIN_OPEN_REQUEST = 'LOGIN_OPEN_REQUEST';
+export const LOGIN_OPEN_SUCCESS = 'LOGIN_OPEN_SUCCESS';
+export const LOGIN_OPEN_FAILURE = 'LOGIN_OPEN_FAILURE';
 
 export const LOAD_MY_INFO_REQUEST = 'LOAD_MY_INFO_REQUEST';
 export const LOAD_MY_INFO_SUCCESS = 'LOAD_MY_INFO_SUCCESS';
@@ -101,6 +108,13 @@ export const logoutRequestAction = () => ({
   type: LOG_OUT_REQUEST,
 });
 
+export const loginOpenAction = () => ({
+  type: LOGIN_OPEN_REQUEST,
+});
+export const loginOpenSuccessAction = () => ({
+  type: LOGIN_OPEN_SUCCESS,
+});
+
 const reducer = (state = initialState, action) => produce(state, (draft) => {
   switch (action.type) {
     case REMOVE_FOLLOWER_REQUEST:
@@ -144,6 +158,16 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
     case LOAD_FOLLOWERS_FAILURE:
       draft.loadFollowersLoading = false;
       draft.loadFollowersError = action.error;
+      break;
+    case LOGIN_OPEN_REQUEST:
+      draft.loginOpenLoading = !state.loginOpenLoading;
+      break;
+    case LOGIN_OPEN_SUCCESS:
+      draft.loginOpenLoading = false;
+      break;
+    case LOGIN_OPEN_FAILURE:
+      draft.loginOpenLoading = false;
+      draft.loginOpenError = action.error;
       break;
     case LOAD_MY_INFO_REQUEST:
       draft.loadMyInfoLoading = true;
@@ -242,20 +266,20 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
       draft.signUpLoading = false;
       draft.signUpError = action.error;
       break;
-      case CHANGE_EMAIL_REQUEST:
-        draft.changeEmailLoading = true;
-        draft.changeEmailError = null;
-        draft.changeEmailDone = false;
-        break;
-      case CHANGE_EMAIL_SUCCESS:
-        draft.me.Email = action.data.Email;
-        draft.changeEmailLoading = false;
-        draft.changeEmailDone = true;
-        break;
-      case CHANGE_EMAIL_FAILURE:
-        draft.changeEmailLoading = false;
-        draft.changeEmailError = action.error;
-        break;
+    case CHANGE_EMAIL_REQUEST:
+      draft.changeEmailLoading = true;
+      draft.changeEmailError = null;
+      draft.changeEmailDone = false;
+      break;
+    case CHANGE_EMAIL_SUCCESS:
+      draft.me.Email = action.data.Email;
+      draft.changeEmailLoading = false;
+      draft.changeEmailDone = true;
+      break;
+    case CHANGE_EMAIL_FAILURE:
+      draft.changeEmailLoading = false;
+      draft.changeEmailError = action.error;
+      break;
     case CHANGE_NICKNAME_REQUEST:
       draft.changeNicknameLoading = true;
       draft.changeNicknameError = null;
@@ -273,23 +297,23 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
     case ADD_POST_TO_ME:
       draft.me.Posts.unshift({ id: action.data });
       break;
-      // return {
-      //   ...state,
-      //   me: {
-      //     ...state.me,
-      //     Posts: [{ id: action.data }, ...state.me.Posts],
-      //   },
-      // };
+    // return {
+    //   ...state,
+    //   me: {
+    //     ...state.me,
+    //     Posts: [{ id: action.data }, ...state.me.Posts],
+    //   },
+    // };
     case REMOVE_POST_OF_ME:
       draft.me.Posts = draft.me.Posts.filter((v) => v.id !== action.data);
       break;
-      // return {
-      //   ...state,
-      //   me: {
-      //     ...state.me,
-      //     Posts: state.me.Posts.filter((v) => v.id !== action.data),
-      //   },
-      // };
+    // return {
+    //   ...state,
+    //   me: {
+    //     ...state.me,
+    //     Posts: state.me.Posts.filter((v) => v.id !== action.data),
+    //   },
+    // };
     default:
       break;
   }

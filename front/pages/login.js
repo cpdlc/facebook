@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 
 import useInput from '../hooks/useInput';
-import { LOAD_MY_INFO_REQUEST, loginRequestAction } from '../reducers/user';
+import { LOAD_MY_INFO_REQUEST, loginOpenSuccessAction, loginRequestAction } from '../reducers/user';
 import AppLayout from '../components/AppLayout';
 import Router from 'next/router';
 import AuthCardWrapper from '../components/AuthCardWrapper';
@@ -36,7 +36,8 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (logInDone) {
-      Router.replace('/');
+      // Router.replace('/');
+      loginOpenSuccessAction();
     }
   }, [logInDone]);
 
@@ -61,17 +62,14 @@ const LoginForm = () => {
 
 
   return (
-    <AppLayout>
+    // <AppLayout>
       <Row gutter={24}>
         <Col xs={24} md={6}>
         </Col>
         <Col xs={24} md={12}>
           <AuthCardWrapper>
-
             <div id="container">
               <div class="wrapper">
-
-
                 <Stack
                   sx={{
                     textAlign: 'center',
@@ -200,7 +198,7 @@ const LoginForm = () => {
 
         </Col>
       </Row>
-    </AppLayout>
+    // </AppLayout>
   );
 };
 

@@ -10,12 +10,12 @@ import { LOAD_POSTS_REQUEST } from '../reducers/post';
 import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 import wrapper from '../store/configureStore';
 import Link from 'next/link';
+import LoginForm from './login';
 
 const Home = () => {
    const dispatch = useDispatch();
-   const { me } = useSelector((state) => state.user);
+   const { me, loginOpenLoading } = useSelector((state) => state.user);
    const { mainPosts, hasMorePosts, loadPostsLoading, retweetError } = useSelector((state) => state.post);
-
    useEffect(() => {
       if (retweetError) {
          alert(retweetError);
@@ -40,13 +40,18 @@ const Home = () => {
       };
    }, [hasMorePosts, loadPostsLoading, mainPosts]);
 
-   
+
    return (
       <AppLayout>
          {/* {me && <PostForm />}
       {mainPosts.map((post) => <PostCard key={post.id} post={post} />)} */}
          <div class="wrap">
             <main>
+               <div class="skills">
+                  <div class="inner">
+                     {loginOpenLoading&&<LoginForm />}
+                  </div>
+               </div>
                <div class="skills">
                   <div class="inner">
                      <h2><span>활용능력 Skills</span></h2>
@@ -133,8 +138,8 @@ const Home = () => {
                                  </thead>
                                  <tbody>
                                     <tr>
-                                      
-                              
+
+
                                        <td headers="col1">
                                           <span class="category html">React</span><span class="category css">Node</span>
                                        </td>
@@ -160,7 +165,7 @@ const Home = () => {
                                  풀스텍
                               </p>
                               <p class="summary">
-                                 facebook을 Clone coding 하면서 만든 사이트입니다. 프론트와 백엔드 배포까지 하였습니다.<br /><br />현재 웹사이트에서 facebook을 클릭하시면 제가 만든 사이트를 이용하실수 있습니다. 
+                                 facebook을 Clone coding 하면서 만든 사이트입니다. 프론트와 백엔드 배포까지 하였습니다.<br /><br />현재 웹사이트에서 facebook을 클릭하시면 제가 만든 사이트를 이용하실수 있습니다.
                                  회원가입 로그인 좋아요 게시글 등록 수정 삭제등을 하실수 있습니다.
                               </p>
                               <ul class="point">
@@ -172,7 +177,7 @@ const Home = () => {
                                  </li>
                               </ul>
                               <div class="btn_area">
-                               
+
                               </div>
                               <table class="file_link">
                                  <thead>
@@ -181,7 +186,7 @@ const Home = () => {
                                        <th id="col2">Source</th>
                                        <th id="col3">Page</th>
                                     </tr>
-                                    
+
                                  </thead>
                                  <tbody>
                                     <tr>
@@ -218,7 +223,7 @@ const Home = () => {
                                  </li>
                               </ul>
                               <div class="btn_area">
-                                
+
                               </div>
                               <table class="file_link">
                                  <thead>
@@ -251,7 +256,7 @@ const Home = () => {
                                  퍼블리싱
                               </p>
                               <p class="summary">
-                                 HTML과 CSS를 활용한 프토폴리오입니다.<br /><br />애니메이션과 MEDIA를 이용한 역동적 반응형 사이트입니다. 
+                                 HTML과 CSS를 활용한 프토폴리오입니다.<br /><br />애니메이션과 MEDIA를 이용한 역동적 반응형 사이트입니다.
                               </p>
                               <ul class="point">
                                  <li>
@@ -262,7 +267,7 @@ const Home = () => {
                                  </li>
                               </ul>
                               <div class="btn_area">
-                                
+
                               </div>
                               <table class="file_link">
                                  <thead>
@@ -282,14 +287,14 @@ const Home = () => {
                                        </td>
                                        <td headers="col3">
                                           <Link href="/skill"><a>Web Page</a></Link>
-                                          
+
                                        </td>
                                     </tr>
                                  </tbody>
                               </table>
                            </div>
                         </li>
-                        
+
                      </ol>
                   </div>
                </div>
