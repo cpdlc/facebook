@@ -12,10 +12,11 @@ import wrapper from '../store/configureStore';
 import { Col, Row } from 'antd';
 import LoginForm from '../pages/login';
 import Signup from '../pages/signup';
+import Profile from './profile';
 
 const Facebook = () => {
   const dispatch = useDispatch();
-  const { me, loginOpenLoading ,signupOpenLoading} = useSelector((state) => state.user);
+  const { me, loginOpenLoading ,signupOpenLoading ,profileOpenLoading} = useSelector((state) => state.user);
   const { mainPosts, hasMorePosts, loadPostsLoading, retweetError } = useSelector((state) => state.post);
 
   useEffect(() => {
@@ -45,6 +46,7 @@ const Facebook = () => {
     <>
       <div class="skills">
         <div class="inner">
+        {profileOpenLoading && <Profile />}
           {loginOpenLoading && <LoginForm />}
           {signupOpenLoading && <Signup />}
         </div>

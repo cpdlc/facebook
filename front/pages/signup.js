@@ -255,8 +255,8 @@ const Signup = () => {
           </AuthCardWrapper>
         </Col>
       </Row>
-   
-    {/* </AppLayout> */ }
+
+      {/* </AppLayout> */}
     </>
   );
 };

@@ -18,7 +18,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import Person2OutlinedIcon from '@mui/icons-material/Person2Outlined';
 import PersonAddAlt1OutlinedIcon from '@mui/icons-material/PersonAddAlt1Outlined';
 import Link from 'next/link';
-import { loginOpenAction, loginOpenSuccessAction, logoutRequestAction, signupOpenAction, signupOpenSuccessAction } from '../reducers/user';
+import { loginOpenAction, loginOpenSuccessAction, logoutRequestAction, profileOpenAction, signupOpenAction, signupOpenSuccessAction } from '../reducers/user';
 import Home from './home';
 import Skill from './skillHome';
 import Facebook from './facebookHome';
@@ -26,6 +26,7 @@ import wrapper from '../store/configureStore';
 import axios from 'axios';
 import LoginForm from '../pages/login';
 import Signup from '../pages/signup';
+import Profile from './profile';
 const SearchInput = styled(Input.Search)`
   vertical-align: middle;
 `;
@@ -56,7 +57,7 @@ const AppLayout = ({ children }) => {
       };
    }, [hasMorePosts, loadPostsLoading, mainPosts]);
   const [searchInput, onChangeSearchInput] = useInput('');
-  const { me, logOutLoading,loginOpenLoading,signupOpenLoading  } = useSelector((state) => state.user);
+  const { me, logOutLoading,loginOpenLoading,signupOpenLoading ,profileOpenLoading } = useSelector((state) => state.user);
 
   const onSearch = useCallback(() => {
     Router.push(`/hashtag/${searchInput}`);
@@ -77,6 +78,10 @@ const AppLayout = ({ children }) => {
     dispatch(loginOpenSuccessAction())
   }, []);
 
+  const onOpenProfile = useCallback(()=>{
+   dispatch(profileOpenAction());
+  },[])
+
   const [homeOpen, setHomeOpen] = useState(true)
   const [skillOpen, setSkillOpen] = useState(false)
   const [facebookOpen, setFacebookOpen] = useState(false)
@@ -87,13 +92,11 @@ const AppLayout = ({ children }) => {
     setFacebookOpen(false)
   }, [])
 
-
   const skillClick = useCallback(() => {
     setHomeOpen(false)
     setSkillOpen(true)
     setFacebookOpen(false)
   }, [])
-
 
   const facebookClick = useCallback(() => {
     setHomeOpen(false)
@@ -121,11 +124,11 @@ const AppLayout = ({ children }) => {
                 {me ? <div className="upperRightside">
                   <Stack direction='row-reverse' >
                     <Stack onClick={onLogOut} loading={logOutLoading}><a><LogoutOutlinedIcon />로그아웃</a></Stack>&nbsp;&nbsp;|&nbsp;&nbsp;
-                    <Link href="/profile"><a><Person2OutlinedIcon />{me.nickname}</a></Link>&nbsp;&nbsp;&nbsp;
+                    <Box onClick={onOpenProfile}><a><Person2OutlinedIcon />{me.nickname}</a></Box>&nbsp;&nbsp;&nbsp;
                   </Stack>
                 </div> : <div className="upperRightside">
                   <Stack justifyContent='flex-end' direction='row'>
-                    <Box onClick={onOpenLogIn}><a><LoginIcon />&nbsp;로그인</a></Box>
+                    <Box onClick={onOpenLogIn}><a><LoginIcon />&nbsp;로그인</a></Box>&nbsp;&nbsp;|&nbsp;&nbsp;
                     <Box onClick={onOpenSignUp}><a><PersonAddAlt1OutlinedIcon />&nbsp;회원가입</a></Box>&nbsp;&nbsp;&nbsp;
                   </Stack>
                 </div>}
@@ -166,6 +169,7 @@ const AppLayout = ({ children }) => {
                   <main>
                      <div class="skills">
                         <div class="inner">
+                           {profileOpenLoading && <Profile />}
                            {loginOpenLoading && <LoginForm />}
                            {signupOpenLoading && <Signup />}
                         </div>

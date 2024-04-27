@@ -11,10 +11,11 @@ import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 import wrapper from '../store/configureStore';
 import LoginForm from '../pages/login';
 import Signup from '../pages/signup';
+import Profile from './profile';
 
 const Skill = () => {
    const dispatch = useDispatch();
-   const { me, loginOpenLoading ,signupOpenLoading } = useSelector((state) => state.user);
+   const { me, loginOpenLoading ,signupOpenLoading,profileOpenLoading } = useSelector((state) => state.user);
    const { mainPosts, hasMorePosts, loadPostsLoading, retweetError } = useSelector((state) => state.post);
 
    useEffect(() => {
@@ -47,8 +48,10 @@ const Skill = () => {
          <div class="allWrap">
             <div class="skills">
                <div class="inner">
+               {profileOpenLoading && <Profile />}
                   {loginOpenLoading && <LoginForm />}
                   {signupOpenLoading && <Signup />}
+                  
                </div>
             </div>
             <div class="rightWrap">

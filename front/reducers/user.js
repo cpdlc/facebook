@@ -1,6 +1,7 @@
 import produce from '../util/produce';
 
 export const initialState = {
+  profileOpenLoading: false, // 프로필 토글
   signupOpenLoading: false, // 회원가입 토글
   signupOpenDone: false,
   signupOpenError: null,
@@ -46,6 +47,8 @@ export const initialState = {
   me: null,
   userInfo: null,
 };
+
+export const PROFILE_OPEN_REQUEST = 'PROFILE_OPEN_REQUEST';
 
 export const SIGNUP_OPEN_REQUEST = 'SIGNUP_OPEN_REQUEST';
 export const SIGNUP_OPEN_SUCCESS = 'SIGNUP_OPEN_SUCCESS';
@@ -119,6 +122,10 @@ export const signupOpenAction = () => ({
   type: SIGNUP_OPEN_REQUEST,
 });
 
+export const profileOpenAction = () => ({
+  type: PROFILE_OPEN_REQUEST,
+});
+
 export const loginOpenAction = () => ({
   type: LOGIN_OPEN_REQUEST,
 });
@@ -172,6 +179,9 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
     case LOAD_FOLLOWERS_FAILURE:
       draft.loadFollowersLoading = false;
       draft.loadFollowersError = action.error;
+      break;
+      case PROFILE_OPEN_REQUEST:
+      draft.profileOpenLoading = !state.profileOpenLoading;
       break;
       case SIGNUP_OPEN_REQUEST:
       draft.signupOpenLoading = !state.signupOpenLoading;
