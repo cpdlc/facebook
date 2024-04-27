@@ -163,7 +163,7 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
       draft.loginOpenLoading = !state.loginOpenLoading;
       break;
     case LOGIN_OPEN_SUCCESS:
-      draft.loginOpenLoading = false;
+      draft.loginOpenLoading =false;
       break;
     case LOGIN_OPEN_FAILURE:
       draft.loginOpenLoading = false;
@@ -248,6 +248,7 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
       draft.logOutLoading = false;
       draft.logOutDone = true;
       draft.me = null;
+      draft.logInDone = false;
       break;
     case LOG_OUT_FAILURE:
       draft.logOutLoading = false;

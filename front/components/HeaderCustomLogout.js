@@ -37,7 +37,7 @@ const HeaderCustomLogout = () => {
 
               <div className="upperRightside">
                 <Stack justifyContent='flex-end' direction='row'>
-                <Box onClick={onOpenLogIn}><a><LoginIcon />&nbsp;로그인</a></Box>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <Box onClick={onOpenLogIn}><a><LoginIcon />&nbsp;로그인</a></Box>
                 {/* <Link href="/login"><a><LoginIcon />&nbsp;로그인</a></Link>&nbsp;&nbsp;|&nbsp;&nbsp; */}
                 <Link href="/signup"><a><PersonAddAlt1OutlinedIcon />&nbsp;회원가입</a></Link>&nbsp;&nbsp;&nbsp;
                 </Stack>

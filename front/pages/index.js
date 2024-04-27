@@ -40,7 +40,6 @@ const Home = () => {
       };
    }, [hasMorePosts, loadPostsLoading, mainPosts]);
 
-
    return (
       <AppLayout>
          {/* {me && <PostForm />}

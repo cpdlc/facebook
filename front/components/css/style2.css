@@ -109,7 +109,7 @@ article .bg{
 	background-size:cover;
 	background-position:center center;
 }
-article .bg1{background-image:url(../images/pic1.jpg);}
+/* article .bg1{background-image:url(../images/pic1.jpg);} */
 article .bg2{background-image:url(../images/pic2.jpg);}
 article .bg3{background-image:url(../images/pic3.jpg);}
 article .bg4{background-image:url(../images/pic4.jpg);}

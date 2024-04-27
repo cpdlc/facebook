@@ -30,14 +30,13 @@ const LoginForm = () => {
   const { logInLoading, logInDone, logInError, me } = useSelector((state) => state.user);
   useEffect(() => {
     if (me && me.id) {
-      Router.replace('/');
+      // Router.replace('/');
     }
   }, [me && me.id]);
-
   useEffect(() => {
     if (logInDone) {
       // Router.replace('/');
-      loginOpenSuccessAction();
+      dispatch(loginOpenSuccessAction());
     }
   }, [logInDone]);
 

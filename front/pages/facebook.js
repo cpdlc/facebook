@@ -10,10 +10,11 @@ import { LOAD_POSTS_REQUEST } from '../reducers/post';
 import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 import wrapper from '../store/configureStore';
 import { Col, Row } from 'antd';
+import LoginForm from './login';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { me } = useSelector((state) => state.user);
+  const { me, loginOpenLoading } = useSelector((state) => state.user);
   const { mainPosts, hasMorePosts, loadPostsLoading, retweetError } = useSelector((state) => state.post);
 
   useEffect(() => {
@@ -41,8 +42,15 @@ const Home = () => {
   }, [hasMorePosts, loadPostsLoading, mainPosts]);
   return (
     <AppLayout>
+      <div class="skills">
+        <div class="inner">
+          {loginOpenLoading && <LoginForm />}
+        </div>
+      </div>
       <Row gutter={20}>
+
         <Col xs={20} md={6}>
+
         </Col>
         <Col xs={24} md={12}>
           {me && <PostForm />}
