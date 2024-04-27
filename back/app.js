@@ -58,7 +58,7 @@ app.use(session({
   cookie: {
     httpOnly: true,
     secure: false,
-    domain: process.env.NODE_ENV === 'production' && '.chahome.com'
+    domain: process.env.NODE_ENV === 'production' && '.chahome.store'
   },
 }));
 app.use(passport.initialize());
