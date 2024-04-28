@@ -69,6 +69,7 @@ export const LOAD_USER_FAILURE = 'LOAD_USER_FAILURE';
 export const LOG_IN_REQUEST = 'LOG_IN_REQUEST';
 export const LOG_IN_SUCCESS = 'LOG_IN_SUCCESS';
 export const LOG_IN_FAILURE = 'LOG_IN_FAILURE';
+export const LOG_IN_RESET = 'LOG_IN_RESET';
 
 export const LOG_OUT_REQUEST = 'LOG_OUT_REQUEST';
 export const LOG_OUT_SUCCESS = 'LOG_OUT_SUCCESS';
@@ -272,6 +273,9 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
     case LOG_IN_FAILURE:
       draft.logInLoading = false;
       draft.logInError = action.error;
+      break;
+      case LOG_IN_RESET:
+      draft.logInError = null;
       break;
     case LOG_OUT_REQUEST:
       draft.logOutLoading = true;

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 
 import useInput from '../hooks/useInput';
-import { LOAD_MY_INFO_REQUEST, loginOpenSuccessAction, loginRequestAction } from '../reducers/user';
+import { LOAD_MY_INFO_REQUEST, LOG_IN_RESET, loginOpenSuccessAction, loginRequestAction } from '../reducers/user';
 import AppLayout from '../components/AppLayout';
 import Router from 'next/router';
 import AuthCardWrapper from '../components/AuthCardWrapper';
@@ -35,8 +35,7 @@ const LoginForm = () => {
   }, [me && me.id]);
   useEffect(() => {
     if (logInDone) {
-      // Router.replace('/');
-      // dispatch(loginOpenSuccessAction());
+      dispatch(loginOpenSuccessAction());
     }
   }, [logInDone]);
 
@@ -44,12 +43,14 @@ const LoginForm = () => {
     if (logInError) {
       alert(logInError);
     }
+    dispatch({
+      type: LOG_IN_RESET,
+   });
   }, [logInError]);
 
   const onSubmitForm = useCallback(() => {
     // console.log(email, password);
     dispatch(loginRequestAction({ email, password }));
-    dispatch(loginOpenSuccessAction());
   }, [email, password]);
 
   useEffect(() => {
@@ -63,82 +64,82 @@ const LoginForm = () => {
 
   return (
     // <AppLayout>
-      <Row gutter={24}>
-        <Col xs={24} md={6}>
-        </Col>
-        <Col xs={24} md={12}>
-          <AuthCardWrapper>
-            <div id="container">
-              <div class="wrapper">
-                <Stack
-                  sx={{
-                    textAlign: 'center',
-                    marginBottom:"20px",
-                    fontWeight: "bolder",
-                    fontSize:"40px"
-                  }}>
-                  <h1>
-                    {/* <a href="index.html">
+    <Row gutter={24}>
+      <Col xs={24} md={6}>
+      </Col>
+      <Col xs={24} md={12}>
+        <AuthCardWrapper>
+          <div id="container">
+            <div class="wrapper">
+              <Stack
+                sx={{
+                  textAlign: 'center',
+                  marginBottom: "20px",
+                  fontWeight: "bolder",
+                  fontSize: "40px"
+                }}>
+                <h1>
+                  {/* <a href="index.html">
                     <img src="img/logo.png" alt="로그인페이지" />
                   </a> */}&lt; / &gt; 로그인
-                  </h1>
-                </Stack>
+                </h1>
+              </Stack>
 
-                <div class="signupWrap">
-                  <FormWrapper onFinish={onSubmitForm}>
-                    <p><Input
-                      placeholder="아이디"
-                      name="user-email"
-                      type="text"
-                      value={email}
-                      onChange={onChangeEmail}
-                      required
-                    /></p>
-                    <p><Input
-                      placeholder='비밀번호'
-                      name="user-password"
-                      type="password"
-                      value={password}
-                      onChange={onChangePassword}
-                      required
-                    /></p>
+              <div class="signupWrap">
+                <FormWrapper onFinish={onSubmitForm}>
+                  <p><Input
+                    placeholder="아이디"
+                    name="user-email"
+                    type="text"
+                    value={email}
+                    onChange={onChangeEmail}
+                    required
+                  /></p>
+                  <p><Input
+                    placeholder='비밀번호'
+                    name="user-password"
+                    type="password"
+                    value={password}
+                    onChange={onChangePassword}
+                    required
+                  /></p>
 
-                    <p>
-                      {/* <input type="submit" value="로그인" /> */}
-                      <Button
-                        type="primary" htmlType="submit" loading={logInLoading}
-                        disableElevation
-                        disabled={
-                          !isValid
-                        }
-                        fullWidth
-                        size="large"
-                        variant="contained"
-                        color={isValid ? 'primary' : 'inherit'}
-                        sx={{ maxWidth: '24rem' }}
-                      >
-                        로그인
-                      </Button>
-                    </p>
-                    {/* <div class="searchWrap">
+                  <p>
+                    {/* <input type="submit" value="로그인" /> */}
+                    <Button
+                      type="primary" htmlType="submit" loading={logInLoading}
+                      disableElevation
+                      disabled={
+                        !isValid
+                      }
+                      fullWidth
+                      size="large"
+                      variant="contained"
+                      color={isValid ? 'primary' : 'inherit'}
+                      sx={{ maxWidth: '24rem' }}
+                    >
+                      로그인
+                    </Button>
+                  </p>
+                  {/* <div class="searchWrap">
                   <a href="#">아이디 찾기</a> |
                   <a href="#">비밀번호 찾기</a>
                 </div> */}
-                  </FormWrapper>
-                </div>
-
+                </FormWrapper>
               </div>
 
-              <div id="container2">
-                <div class="wrapper2">
-                  <span>계정이 없으신가요?
-                    <Link href="/signup">가입하기</Link>
-                  </span>
-                </div>
-              </div>
             </div>
 
-            {/* <AuthCardWrapper>
+            <div id="container2">
+              <div class="wrapper2">
+                <span>계정이 없으신가요?
+                  <Link href="/signup">가입하기</Link>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* <AuthCardWrapper>
             <Stack>
         <Grid container spacing={2} flexDirection="column">
         <Grid item xs={12}>
@@ -190,14 +191,9 @@ const LoginForm = () => {
     </Grid>
     </Stack>
     </AuthCardWrapper> */}
-
-
-
-          </AuthCardWrapper>
-
-
-        </Col>
-      </Row>
+        </AuthCardWrapper>
+      </Col>
+    </Row>
     // </AppLayout>
   );
 };
