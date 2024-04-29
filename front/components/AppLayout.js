@@ -190,9 +190,9 @@ const AppLayout = ({ children }) => {
                                  프론트엔드
                                  <ul>
                                     <li><span>TYPESCRIPT</span></li>
-                                    <li><span>REACT</span></li>
+                                    <li><span>REACTJS</span></li>
                                     <li><span>REACT NATIVE</span></li>
-                                    <li><span>REDUX</span></li>
+                                    <li><span>NEXTJS</span></li>
                                  </ul>
                               </li>
                               <li>
