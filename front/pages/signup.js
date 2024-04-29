@@ -181,13 +181,14 @@ const Signup = () => {
                 </div>
               </div>
             </div>
-            <div id="container2">
+            
+            {/* <div id="container2">
               <div class="wrapper2">
                 <span>계정이 있으신가요?
                   <Link href="/login">로그인</Link>
                 </span>
               </div>
-            </div>
+            </div> */}
 
 
             {/* <Grid container spacing={2} flexDirection="column">

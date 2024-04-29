@@ -129,15 +129,15 @@ const LoginForm = () => {
               </div>
 
             </div>
-
-            <div id="container2">
+            </div>
+            {/*  <div id="container2">
               <div class="wrapper2">
                 <span>계정이 없으신가요?
                   <Link href="/signup">가입하기</Link>
                 </span>
               </div>
-            </div>
-          </div>
+              </div>*/}
+        
 
           {/* <AuthCardWrapper>
             <Stack>
