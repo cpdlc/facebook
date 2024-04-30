@@ -143,6 +143,7 @@ const AppLayout = ({ children }) => {
               <nav className="gnb">
 
                 <ul>
+                <li> <Box onClick={homeClick} ><a>HOME</a></Box></li>
                   <li> <Box onClick={skillClick} ><a>SKILL</a></Box></li>
                   <li>  <Box onClick={facebookClick} ><a>FACEBOOK</a></Box></li>
                   <li>  <Link href="https://github.com/cpdlc" ><a target='_blank'>GIT</a></Link></li>
